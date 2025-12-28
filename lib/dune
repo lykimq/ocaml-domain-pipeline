@@ -1,0 +1,5 @@
+(library
+ (name domain_pipeline)
+ (public_name domain_pipeline)
+ (libraries threads))
+

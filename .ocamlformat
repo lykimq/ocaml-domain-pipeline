@@ -1,0 +1,36 @@
+version = 0.28.1
+profile = default
+
+# Line width for code formatting
+margin = 80
+
+# Comment formatting
+comment-check = true
+doc-comments = before
+doc-comments-tag-only = default
+
+# Indentation
+indent-after-in = 2
+cases-exp-indent = 2
+
+# Code style
+break-cases = fit-or-vertical
+break-infix = wrap
+break-infix-before-func = false
+break-separators = after
+break-string-literals = auto
+field-space = loose
+if-then-else = compact
+let-binding-spacing = compact
+module-item-spacing = sparse
+nested-match = wrap
+ocp-indent-compat = false
+parens-tuple = always
+parens-tuple-patterns = always
+single-case = compact
+
+# Wrapping
+break-before-in = fit-or-vertical
+break-fun-decl = wrap
+break-fun-sig = wrap
+let-binding-spacing = compact
