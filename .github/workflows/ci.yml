@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up OCaml
+        uses: ocaml/setup-ocaml@v3
+        with:
+          ocaml-compiler: "5.2.1"
+          dune-cache: true
+
+      - name: Install dependencies
+        run: opam install . --deps-only --yes
+
+      - name: Install ocamlformat
+        run: opam install ocamlformat --yes
+
+      - name: Check code formatting
+        run: make fmt-check
+
+      - name: Build project
+        run: make build
+
+      - name: Run example
+        run: make run
+
