@@ -3,11 +3,21 @@ name: CI
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - "**.md"
+      - ".gitignore"
+      - "LICENSE"
+      - "docs/**"
   pull_request:
     branches: [main]
+    paths-ignore:
+      - "**.md"
+      - ".gitignore"
+      - "LICENSE"
+      - "docs/**"
 
 jobs:
-  build:
+  format-check:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -17,16 +27,31 @@ jobs:
         uses: ocaml/setup-ocaml@v3
         with:
           ocaml-compiler: "5.2.1"
-          dune-cache: true
-
-      - name: Install dependencies
-        run: opam install . --deps-only --yes
+          dune-cache: false
 
       - name: Install ocamlformat
         run: opam install ocamlformat --yes
 
       - name: Check code formatting
         run: make fmt-check
+
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ocaml-version: ["5.0.0", "5.1.0", "5.2.1"]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up OCaml
+        uses: ocaml/setup-ocaml@v3
+        with:
+          ocaml-compiler: ${{ matrix.ocaml-version }}
+          dune-cache: true
+
+      - name: Install dependencies
+        run: opam install . --deps-only --yes
 
       - name: Build project
         run: make build
