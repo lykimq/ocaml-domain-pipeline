@@ -9,7 +9,7 @@ I/O-bound workloads like web crawling, log processing, and data transformation.
 
 This is a **working implementation** suitable for production use. The core API
 is stable, and the architecture has been validated through testing. See
-[PROTOTYPE.md](PROTOTYPE.md) for implementation details, performance
+[PROTOTYPE.md](docs/PROTOTYPE.md) for implementation details, performance
 characteristics, and the production roadmap.
 
 ## When to Use This Library
@@ -22,7 +22,7 @@ characteristics, and the production roadmap.
 
 **Not ideal for:**
 - CPU-bound workloads requiring extreme throughput (see performance notes in
-  [PROTOTYPE.md](PROTOTYPE.md))
+  [PROTOTYPE.md](docs/PROTOTYPE.md))
 - Simple parallel tasks better served by `Domainslib.Parallel_for`
 - Real-time systems with hard latency requirements
 
@@ -123,12 +123,12 @@ let () =
 This library prioritizes correctness and ease of use. For I/O-bound workloads,
 expect near-linear scaling with parallelism (up to 8 workers per stage). For
 CPU-bound work, current performance is functional but not optimal; see
-[PROTOTYPE.md](PROTOTYPE.md) for technical details and future optimization
+[PROTOTYPE.md](docs/PROTOTYPE.md) for technical details and future optimization
 plans.
 
 ## Development
 
-See [PROTOTYPE.md](PROTOTYPE.md) for:
+See [PROTOTYPE.md](docs/PROTOTYPE.md) for:
 - Architecture overview and design rationale
 - Implementation details and known limitations
 - Production roadmap
