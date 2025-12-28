@@ -50,6 +50,9 @@ jobs:
           ocaml-compiler: ${{ matrix.ocaml-version }}
           dune-cache: true
 
+      - name: Install threads package
+        run: opam install threads --yes
+
       - name: Install dependencies
         run: opam install . --deps-only --yes
 
