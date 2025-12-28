@@ -12,7 +12,7 @@ bug-reports: "https://github.com/lykimq/ocaml-domain-pipeline/issues"
 depends: [
   "ocaml" {>= "5.0"}
   "dune" {>= "2.9"}
-  "threads"
+  "base-threads"
   "odoc" {with-doc}
 ]
 build: [

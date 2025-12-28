@@ -23,5 +23,5 @@
  (depends
   (ocaml (>= 5.0))
   dune
-  threads))
+  base-threads))
 

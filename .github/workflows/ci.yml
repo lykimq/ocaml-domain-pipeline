@@ -37,9 +37,6 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        ocaml-version: ["5.0.0", "5.1.0", "5.2.1"]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -47,11 +44,8 @@ jobs:
       - name: Set up OCaml
         uses: ocaml/setup-ocaml@v3
         with:
-          ocaml-compiler: ${{ matrix.ocaml-version }}
+          ocaml-compiler: "5.2.1"
           dune-cache: true
-
-      - name: Install threads package
-        run: opam install threads --yes
 
       - name: Install dependencies
         run: opam install . --deps-only --yes
